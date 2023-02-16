@@ -22,6 +22,7 @@ class Spherical extends StatelessWidget {
           onPressed: () {},
           icon: Icon(size: 30, Icons.arrow_back_rounded),
         ),
+        
         Padding(
           padding: const EdgeInsets.only(left: 3),
           child: Text(
