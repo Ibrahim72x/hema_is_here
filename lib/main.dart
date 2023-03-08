@@ -4,8 +4,17 @@ void main() {
   runApp(PointsCounter());
 }
 
-class PointsCounter extends StatelessWidget {
-  const PointsCounter({super.key});
+//! There's a probem in rendering when both exced 99
+
+class PointsCounter extends StatefulWidget {
+  @override
+  State<PointsCounter> createState() => _PointsCounterState();
+}
+
+class _PointsCounterState extends State<PointsCounter> {
+  int teamA = 0;
+
+  int teamB = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +41,13 @@ class PointsCounter extends StatelessWidget {
                         'Team A',
                         style: TextStyle(fontSize: 35),
                       ),
-                      Text(
-                        '0',
-                        style: TextStyle(fontSize: 160),
+                      Row(
+                        children: [
+                          Text(
+                            '$teamA',
+                            style: TextStyle(fontSize: 160),
+                          ),
+                        ],
                       ),
                       Container(
                         height: 250,
@@ -46,7 +59,11 @@ class PointsCounter extends StatelessWidget {
                                     padding: EdgeInsets.all(8),
                                     minimumSize: Size(150, 50),
                                     primary: Colors.orange),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    teamA++;
+                                  });
+                                },
                                 child: Text(
                                   'Add 1 point  ',
                                   style: TextStyle(
@@ -57,7 +74,11 @@ class PointsCounter extends StatelessWidget {
                                     padding: EdgeInsets.all(8),
                                     minimumSize: Size(150, 50),
                                     primary: Colors.orange),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    teamA += 2;
+                                  });
+                                },
                                 child: Text(
                                   'Add 2 points',
                                   style: TextStyle(
@@ -68,7 +89,11 @@ class PointsCounter extends StatelessWidget {
                                     padding: EdgeInsets.all(8),
                                     minimumSize: Size(150, 50),
                                     primary: Colors.orange),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    teamA += 3;
+                                  });
+                                },
                                 child: Text(
                                   'Add 3 points',
                                   style: TextStyle(
@@ -93,7 +118,7 @@ class PointsCounter extends StatelessWidget {
                       style: TextStyle(fontSize: 35),
                     ),
                     Text(
-                      '0',
+                      '$teamB',
                       style: TextStyle(fontSize: 160),
                     ),
                     Container(
@@ -106,7 +131,11 @@ class PointsCounter extends StatelessWidget {
                                   padding: EdgeInsets.all(8),
                                   minimumSize: Size(150, 50),
                                   primary: Colors.orange),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  teamB++;
+                                });
+                              },
                               child: Text(
                                 'Add 1 point  ',
                                 style: TextStyle(
@@ -117,7 +146,11 @@ class PointsCounter extends StatelessWidget {
                                   padding: EdgeInsets.all(8),
                                   minimumSize: Size(150, 50),
                                   primary: Colors.orange),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  teamB += 2;
+                                });
+                              },
                               child: Text(
                                 'Add 2 points',
                                 style: TextStyle(
@@ -128,7 +161,11 @@ class PointsCounter extends StatelessWidget {
                                   padding: EdgeInsets.all(8),
                                   minimumSize: Size(150, 50),
                                   primary: Colors.orange),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  teamB += 3;
+                                });
+                              },
                               child: Text(
                                 'Add 3 points',
                                 style: TextStyle(
@@ -147,7 +184,12 @@ class PointsCounter extends StatelessWidget {
                   padding: EdgeInsets.all(8),
                   minimumSize: Size(150, 50),
                   primary: Colors.orange),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  teamA = 0;
+                  teamB = 0;
+                });
+              },
               child: Text(
                 'Reset',
                 style: TextStyle(color: Colors.black, fontSize: 18),
